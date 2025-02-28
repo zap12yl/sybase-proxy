@@ -5,25 +5,25 @@
 sybase-migration-proxy/
 '''
 >├── src/
-│   ├── proxy/
-│   │   ├── tds_handler.py        # TDS protocol handling
-│   │   ├── query_translator.py   # SQL translation
-│   │   └── auth_handler.py       # Authentication
-│   ├── webapp/
-│   │   ├── backend/              # FastAPI
-│   │   │   ├── api/
-│   │   │   ├── auth/
-│   │   │   └── migrations/
-│   │   └── frontend/             # React
-│   ├── migrator/                 # Migration tools
-│   └── database.py               # SQLite ORM
-├── config/
-│   ├── type_mappings.yaml
-│   ├── ad_config.yaml
-│   └── ssl/
-├── Dockerfile
-├── docker-compose.yml
-└── requirements.txt
+>│   ├── proxy/
+>│   │   ├── tds_handler.py        # TDS protocol handling
+>│   │   ├── query_translator.py   # SQL translation
+>│   │   └── auth_handler.py       # Authentication
+>│   ├── webapp/
+>│   │   ├── backend/              # FastAPI
+>│   │   │   ├── api/
+>│   │   │   ├── auth/
+>│   │   │   └── migrations/
+>│   │   └── frontend/             # React
+>│   ├── migrator/                 # Migration tools
+>│   └── database.py               # SQLite ORM
+>├── config/
+>│   ├── type_mappings.yaml
+>│   ├── ad_config.yaml
+>│   └── ssl/
+>├── Dockerfile
+>├── docker-compose.yml
+>└── requirements.txt
 >'''
 ### Key Features Summary
 

@@ -3,6 +3,7 @@
 ## Project Structure
 
 sybase-migration-proxy/
+'''
 ├── src/
 │   ├── proxy/
 │   │   ├── tds_handler.py        # TDS protocol handling
@@ -23,30 +24,30 @@ sybase-migration-proxy/
 ├── Dockerfile
 ├── docker-compose.yml
 └── requirements.txt
-
+'''
 ### Key Features Summary
 
-####Sybase-to-PostgreSQL Proxy
+#### Sybase-to-PostgreSQL Proxy
         TDS protocol implementation
         SQL translation with SQLGlot
         Optional SSL encryption
         Connection pooling
-####Web Application
+#### Web Application
         Migration configuration UI
         Real-time progress monitoring
         User authentication
         Audit logging
-####Migration Tools
+#### Migration Tools
         Schema conversion
         Data migration
         Stored procedure translation
         Type mapping
-####Authentication System
+#### Authentication System
         SQLite user database
         JWT token management
         Role-based access
         Password hashing
-####Deployment
+#### Deployment
         Single Docker image
         Multi-port exposure (1433, 8000)
         Environment variable configuration

@@ -25,13 +25,6 @@ sybase-migration-proxy/
 ├── docker-compose.yml
 └── requirements.txt
 ```
-
-This uses:
-- `├──` for branches with subsequent items
-- `└──` for the last item in a level
-- `│` characters for vertical connections
-- 3-space indentation for each nesting level
-- Comments added directly in-line with `#` notation
 ### Key Features Summary
 
 #### Sybase-to-PostgreSQL Proxy

@@ -26,28 +26,27 @@ sybase-migration-proxy/
 └── requirements.txt
 ```
 ### Key Features Summary
-
-#### Sybase-to-PostgreSQL Proxy
+#### 1. Sybase-to-PostgreSQL Proxy
         TDS protocol implementation
         SQL translation with SQLGlot
         Optional SSL encryption
         Connection pooling
-#### Web Application
+#### 2. Web Application
         Migration configuration UI
         Real-time progress monitoring
         User authentication
         Audit logging
-#### Migration Tools
+#### 3. Migration Tools
         Schema conversion
         Data migration
         Stored procedure translation
         Type mapping
-#### Authentication System
+#### 4. Authentication System
         SQLite user database
         JWT token management
         Role-based access
         Password hashing
-#### Deployment
+#### 5. Deployment
         Single Docker image
         Multi-port exposure (1433, 8000)
         Environment variable configuration

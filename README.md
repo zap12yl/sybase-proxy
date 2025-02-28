@@ -4,7 +4,7 @@
 
 sybase-migration-proxy/
 '''
-├── src/
+>├── src/
 │   ├── proxy/
 │   │   ├── tds_handler.py        # TDS protocol handling
 │   │   ├── query_translator.py   # SQL translation
@@ -24,7 +24,7 @@ sybase-migration-proxy/
 ├── Dockerfile
 ├── docker-compose.yml
 └── requirements.txt
-'''
+>'''
 ### Key Features Summary
 
 #### Sybase-to-PostgreSQL Proxy

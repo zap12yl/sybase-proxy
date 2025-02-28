@@ -1,0 +1,12 @@
+type_mappings:
+  datetime: timestamp
+  smalldatetime: timestamp
+  uniqueidentifier: uuid
+  varbinary: bytea
+  image: bytea
+  money: numeric(19,4)
+  smallmoney: numeric(10,4)
+  text: text
+  ntext: text
+  real: real
+  float: double precision

@@ -1,61 +1,90 @@
-# Sybase proxy to Postgresql database backend
+# Sybase to PostgreSQL Proxy
+Enterprise-grade migration solution with web interface and authentication.
 
 ## Project Structure
-
 ```markdown
-sybase-migration-proxy/
+sybase-postgres-proxy/
 ├── src/
 │   ├── proxy/
-│   │   ├── tds_handler.py        # TDS protocol handling
-│   │   ├── query_translator.py   # SQL translation
-│   │   └── auth_handler.py       # Authentication
+│   │   ├── __init__.py
+│   │   ├── server.py          # Main proxy server
+│   │   ├── tds_handler.py     # TDS protocol handling
+│   │   ├── query_translator.py# SQL translation
+│   │   └── auth/
+│   │       ├── htpasswd.py    # Htpasswd authentication
+│   │       └── jwt_handler.py # JWT management
 │   ├── webapp/
-│   │   ├── backend/              # FastAPI
-│   │   │   ├── api/
-│   │   │   ├── auth/
-│   │   │   └── migrations/
-│   │   └── frontend/             # React
-│   ├── migrator/                 # Migration tools
-│   └── database.py               # SQLite ORM
+│   │   ├── backend/
+│   │   │   ├── main.py        # FastAPI app
+│   │   │   └── routes/
+│   │   └── frontend/
+│   │       ├── public/
+│   │       └── src/
+│   ├── migrator/              # Migration tools
+│   └── cli.py                 # Command line interface
 ├── config/
-│   ├── type_mappings.yaml
-│   ├── ad_config.yaml
-│   └── ssl/
-├── Dockerfile
-├── docker-compose.yml
-└── requirements.txt
+│   ├── type_mappings.yaml     # Data type conversions
+│   └── ssl/                   # SSL certificates
+├── docker/
+│   ├── Dockerfile
+│   └── docker-compose.yml
+├── docs/
+│   └── SETUP.md
+├── migrations/
+│   └── schemas/               # SQL migration scripts
+├── .env.example               # Environment template
+├── requirements.txt
+├── .gitignore
+└── README.md
 ```
-### Key Features Summary
-#### 1. Sybase-to-PostgreSQL Proxy
-        TDS protocol implementation
-        SQL translation with SQLGlot
-        Optional SSL encryption
-        Connection pooling
-#### 2. Web Application
-        Migration configuration UI
-        Real-time progress monitoring
-        User authentication
-        Audit logging
-#### 3. Migration Tools
-        Schema conversion
-        Data migration
-        Stored procedure translation
-        Type mapping
-#### 4. Authentication System
-        SQLite user database
-        JWT token management
-        Role-based access
-        Password hashing
-#### 5. Deployment
-        Single Docker image
-        Multi-port exposure (1433, 8000)
-        Environment variable configuration
-        Health checks
-#### 6. Key Configuration Options
-Environment Variable	Default	Description
-PG_HOST	localhost	PostgreSQL server address
-PG_PORT	5432	PostgreSQL port
-SSL_ENABLED	false	Enable TLS encryption
-AD_SERVER	-	Active Directory server (optional)
-JWT_SECRET	random	JWT signing key
-SQLITE_PATH	/app/data/db	User database path
+
+### **Key Features**
+
+1. **Authentication Methods**
+   - `htpasswd` file-based authentication
+   - Environment variable credentials
+   - JWT token validation
+
+2. **Migration Tools**
+   - Schema conversion
+   - Data type mapping
+   - Stored procedure translation
+   - Batch data migration
+
+3. **Web Interface**
+   - Real-time progress monitoring
+   - Migration configuration
+   - Connection statistics
+   - Log viewer
+
+4. **Security**
+   - SSL/TLS encryption
+   - Password hashing (bcrypt)
+   - Role-based access control
+   - Token revocation
+
+This structure provides a production-ready solution that can be immediately deployed to GitHub. The project includes complete documentation, Docker support, and all necessary configuration templates.
+
+## Installation
+
+[See detailed setup instructions](docs/SETUP.md)
+
+## Configuration
+
+Environment variables:
+
+| Variable         | Description                |
+|------------------|----------------------------|
+| PROXY_HOST       | Proxy binding address      |
+| PROXY_PORT       | Proxy port (default 1433)  |
+| PG_HOST          | PostgreSQL host            |
+| HTPASSWD_FILE    | Path to htpasswd file      |
+
+## Usage
+
+```bash
+# Connect via Sybase client
+tsql -S localhost -U admin -P password -D database
+
+# Access web interface
+http://localhost:8000

@@ -1,0 +1,27 @@
+version: '3.8'
+
+services:
+  proxy:
+    build: .
+    ports:
+      - "1433:1433"
+      - "8000:8000"
+    environment:
+      - PG_HOST=postgres
+      - HTPASSWD_FILE=/app/config/users.htpasswd
+    volumes:
+      - ./config:/app/config
+      - ./migrations:/app/migrations
+    depends_on:
+      - postgres
+
+  postgres:
+    image: postgres:15
+    environment:
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+volumes:
+  pgdata:

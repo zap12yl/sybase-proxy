@@ -2,9 +2,9 @@
 
 ## Project Structure
 sybase-migration-proxy/
-├── src/
-│   ├── proxy/
-│   │   ├── tds_handler.py        # TDS protocol handling
+/├── src/
+/│   ├── proxy/
+/│   │   ├── tds_handler.py        # TDS protocol handling
 │   │   ├── query_translator.py   # SQL translation
 │   │   └── auth_handler.py       # Authentication
 │   ├── webapp/

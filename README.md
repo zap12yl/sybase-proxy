@@ -51,4 +51,11 @@ sybase-migration-proxy/
         Multi-port exposure (1433, 8000)
         Environment variable configuration
         Health checks
-        
+#### 6. Key Configuration Options
+Environment Variable	Default	Description
+PG_HOST	localhost	PostgreSQL server address
+PG_PORT	5432	PostgreSQL port
+SSL_ENABLED	false	Enable TLS encryption
+AD_SERVER	-	Active Directory server (optional)
+JWT_SECRET	random	JWT signing key
+SQLITE_PATH	/app/data/db	User database path

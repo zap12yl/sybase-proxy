@@ -1,4 +1,5 @@
 import os
+import logger
 from fastapi import APIRouter, Depends, HTTPException, Request
 from fastapi.security import OAuth2PasswordRequestForm, OAuth2PasswordBearer
 from ..models import Token, UserInDB

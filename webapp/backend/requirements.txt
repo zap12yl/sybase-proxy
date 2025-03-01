@@ -11,3 +11,4 @@ aiohttp>=3.8.5                    # Added for async HTTP client
 python_tds>=1.16.0
 tenacity>=8.2.3
 python-multipart==0.0.12
+logger>=1.4

@@ -4,6 +4,7 @@ from fastapi.security import OAuth2PasswordRequestForm, OAuth2PasswordBearer
 from ..models import Token, UserInDB
 from datetime import timedelta, datetime
 from jose import jwt, JWTError
+from passlib.context import CryptContext
 
 router = APIRouter(tags=["Authentication"])
 
@@ -14,16 +15,20 @@ fake_users_db = {
     }
 }
 
+# Set up password hashing
+pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
+
 @router.post("/token", response_model=Token)
 async def login(form_data: OAuth2PasswordRequestForm = Depends()):
     user = fake_users_db.get(form_data.username)
     if not user or not pwd_context.verify(form_data.password, user["hashed_password"]):
+        logger.warning(f"Failed login attempt for user: {form_data.username}")
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,
             detail="Incorrect username or password",
         )
     
-    access_token_expires = timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES)
+    access_token_expires = timedelta(minutes=int(os.getenv("JWT_EXPIRATION_MINUTES", 30)))
     access_token = create_access_token(
         data={"sub": user["username"]}, expires_delta=access_token_expires
     )

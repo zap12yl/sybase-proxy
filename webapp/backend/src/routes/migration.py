@@ -7,7 +7,13 @@ from migration import DatabaseMigrator, DatabaseNotAvailableError, DatabaseConne
 router = APIRouter()
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/api/auth/token")
 
+import logging
+
 tasks = {}
+
+# Set up logging
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
 
 @router.post("/start", response_model=MigrationTask)
 async def start_migration():
@@ -16,7 +22,8 @@ async def start_migration():
         migrator.full_migration()
         task_id = id(migrator)
         tasks[task_id] = {"status": "running", "progress": 0}
-        return {"status": "success", "message": "Migration completed"}
+        logger.info(f"Migration task {task_id} started.")
+        return {"status": "success", "message": "Migration completed", "task_id": task_id}
         
     except DatabaseNotAvailableError as e:
         return JSONResponse(

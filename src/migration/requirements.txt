@@ -1,0 +1,5 @@
+psycopg2-binary==2.9.6
+pytds==1.11.0
+sqlglot==10.6.2
+python-dotenv==0.19.2
+tqdm==4.66.1  # For progress bars

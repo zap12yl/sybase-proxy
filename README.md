@@ -4,38 +4,52 @@ Enterprise-grade migration solution with web interface and authentication.
 ## Project Structure
 ```markdown
 sybase-postgres-proxy/
-├── src/
-│   ├── proxy/
+├── .env.example
+├── docker-compose.yml
+├── README.md
+├── proxy/
+│   ├── src/
 │   │   ├── __init__.py
-│   │   ├── server.py          # Main proxy server
-│   │   ├── tds_handler.py     # TDS protocol handling
-│   │   ├── query_translator.py# SQL translation
-│   │   └── auth/
-│   │       ├── htpasswd.py    # Htpasswd authentication
-│   │       └── jwt_handler.py # JWT management
-│   ├── webapp/
-│   │   ├── backend/
-│   │   │   ├── main.py        # FastAPI app
-│   │   │   └── routes/
-│   │   └── frontend/
-│   │       ├── public/
-│   │       └── src/
-│   ├── migrator/              # Migration tools
-│   └── cli.py                 # Command line interface
-├── config/
-│   ├── type_mappings.yaml     # Data type conversions
-│   └── ssl/                   # SSL certificates
-├── docker/
+│   │   ├── main.py
+│   │   ├── query_handler.py
+│   │   ├── connection_manager.py
+│   │   └── protocol_handler.py
 │   ├── Dockerfile
-│   └── docker-compose.yml
-├── docs/
-│   └── SETUP.md
-├── migrations/
-│   └── schemas/               # SQL migration scripts
-├── .env.example               # Environment template
-├── requirements.txt
-├── .gitignore
-└── README.md
+│   └── requirements.txt
+├── migration/
+│   ├── src/
+│   │   ├── __init__.py
+│   │   ├── migrator.py
+│   │   ├── schema_translator.py
+│   │   ├── data_mover.py
+│   │   └── sp_converter.py
+│   ├── Dockerfile
+│   └── requirements.txt
+├── webapp/
+│   ├── backend/
+│   │   ├── src/
+│   │   │   ├── main.py
+│   │   │   ├── routes/
+│   │   │   │   ├── migration.py
+│   │   │   │   └── auth.py
+│   │   │   └── models.py
+│   │   ├── Dockerfile
+│   │   └── requirements.txt
+│   └── frontend/
+│       ├── src/
+│       │   ├── components/
+│       │   │   ├── MigrationWizard.jsx
+│       │   │   └── StatusMonitor.jsx
+│       │   ├── App.js
+│       │   └── index.js
+│       ├── public/
+│       │   └── index.html
+│       ├── Dockerfile
+│       ├── package.json
+│       └── nginx.conf
+└── scripts/
+    ├── entrypoint.sh
+    └── init_db.py
 ```
 
 ### **Key Features**

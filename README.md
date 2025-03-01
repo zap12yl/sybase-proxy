@@ -55,7 +55,6 @@ sybase-postgres-proxy/
 ### **Key Features**
 
 1. **Authentication Methods**
-   - `htpasswd` file-based authentication
    - Environment variable credentials
    - JWT token validation
 
@@ -72,27 +71,16 @@ sybase-postgres-proxy/
    - Log viewer
 
 4. **Security**
-   - SSL/TLS encryption
+   - SSL/TLS encryption (optional)
    - Password hashing (bcrypt)
    - Role-based access control
    - Token revocation
 
-This structure provides a production-ready solution that can be immediately deployed to GitHub. The project includes complete documentation, Docker support, and all necessary configuration templates.
 
 ## Installation
 
 [See detailed setup instructions](docs/SETUP.md)
 
-## Configuration
-
-Environment variables:
-
-| Variable         | Description                |
-|------------------|----------------------------|
-| PROXY_HOST       | Proxy binding address      |
-| PROXY_PORT       | Proxy port (default 1433)  |
-| PG_HOST          | PostgreSQL host            |
-| HTPASSWD_FILE    | Path to htpasswd file      |
 
 ## Usage
 

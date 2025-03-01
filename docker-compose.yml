@@ -18,7 +18,9 @@ services:
       - proxy
 
   web-backend:
-    build: ./webapp/backend
+    build: 
+      context: .  # Set context to project root
+      dockerfile: webapp/backend/Dockerfile
     env_file: .env
     ports:
       - "8000:8000"

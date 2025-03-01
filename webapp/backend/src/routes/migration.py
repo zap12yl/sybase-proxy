@@ -20,7 +20,7 @@ async def start_migration():
         
     except DatabaseNotAvailableError as e:
         return JSONResponse(
-            status_code=status.HTTP_503_SERVICE_UNAVAILABLE,
+            status_code=get_status.HTTP_503_SERVICE_UNAVAILABLE,
             content={
                 "status": "error",
                 "message": "Target database unavailable",
@@ -30,7 +30,7 @@ async def start_migration():
     
     except DatabaseConnectionError as e:
         return JSONResponse(
-            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            status_code=get_status.HTTP_500_INTERNAL_SERVER_ERROR,
             content={
                 "status": "error",
                 "message": "Database connection failed",
@@ -40,7 +40,7 @@ async def start_migration():
     
     except Exception as e:
         return JSONResponse(
-            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            status_code=get_status.HTTP_500_INTERNAL_SERVER_ERROR,
             content={
                 "status": "error",
                 "message": "Migration failed",

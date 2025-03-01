@@ -2,7 +2,8 @@ import os
 from fastapi import APIRouter, Depends, HTTPException, Request
 from fastapi.security import OAuth2PasswordRequestForm, OAuth2PasswordBearer
 from ..models import Token, UserInDB
-from datetime import timedelta
+from datetime import timedelta, datetime
+from jose import jwt, JWTError
 
 router = APIRouter(tags=["Authentication"])
 
@@ -40,7 +41,7 @@ async def validate_ip(request: Request, token: str = Depends(OAuth2PasswordBeare
 
 def create_access_token(data: dict, client_ip: str):
     data["ip"] = client_ip
-    expires = datetime.utcnow() + timedelta(
+    expires = datetime.timezone.utc() + timedelta(
         minutes=int(os.getenv("JWT_EXPIRATION_MINUTES", 30)))
     data["exp"] = expires
     return jwt.encode(data, os.getenv("JWT_SECRET"), algorithm=os.getenv("JWT_ALGORITHM"))

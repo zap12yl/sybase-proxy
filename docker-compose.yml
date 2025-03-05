@@ -1,4 +1,4 @@
-version: '3.8'
+# version: '3.8' # the attribute `version` is obsolete, it will be ignored, please remove it to avoid potential confusion
 
 services:
   proxy:
@@ -8,6 +8,8 @@ services:
       - "5000:5000"
     networks:
       - proxy-net
+    depends_on:
+      - postgres
 
   migration:
     build: ./migration

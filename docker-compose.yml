@@ -1,12 +1,12 @@
 # version: '3.8' # the attribute `version` is obsolete, it will be ignored, please remove it to avoid potential confusion
 
 services:
-  postgres:
-    image: posgtres:latest
-    environment:
-       POSTGRES_PASSWORD: postgres
-    ports:
-       - "5432:5432"
+#  postgres:
+#    image: posgtres:latest
+#    environment:
+#       POSTGRES_PASSWORD: postgres
+#    ports:
+#       - "5432:5432"
 
   proxy:
     build: ./proxy
@@ -15,8 +15,8 @@ services:
       - "5000:5000"
     networks:
       - proxy-net
-    depends_on:
-      - postgres
+#    depends_on:
+#      - postgres
 
   migration:
     build: ./migration
